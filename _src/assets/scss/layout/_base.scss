@@ -49,14 +49,17 @@
     text-align: center;
 }
 .fav-item{
-    max-width: 400px;
+    max-width: 500px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     margin: 10px;
     font-size: 18px;
     font-weight: 700;
+    img{
+        margin: 5px;
+    }
 }
 .hidden{
     display: none;
