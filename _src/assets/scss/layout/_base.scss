@@ -49,8 +49,9 @@
     text-align: center;
 }
 .fav-item{
+    max-width: 400px;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     margin: 10px;

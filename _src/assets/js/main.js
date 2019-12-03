@@ -12,7 +12,16 @@ let lis;
 const addNewFavourite = (object) => {
   const favElement = document.createElement('li');
   favElement.classList.add('fav-item');
-  favElement.innerHTML += `<span>${object.name}</span><img src=${object.image}>`;
+  const elementImgFav = document.createElement('img');
+  elementImgFav.src = object.image;
+  const elementSpanFav = document.createElement('span');
+  const elementSpanFavContent = document.createTextNode(object.name);
+  elementSpanFav.appendChild(elementSpanFavContent);
+  const elementSpanRemove = document.createElement('span');
+  elementSpanRemove.innerHTML = '<i class="fas fa-times-circle"></i>';
+  favElement.appendChild(elementImgFav);
+  favElement.appendChild(elementSpanFav);
+  favElement.appendChild(elementSpanRemove);
   favouriteList.appendChild(favElement);
 };
 const getLocalStorage = () =>{
