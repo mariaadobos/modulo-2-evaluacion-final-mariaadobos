@@ -9,6 +9,15 @@ const favouriteSeriesSection = document.querySelector('#favouriteSeries');
 const urlBase = 'http://api.tvmaze.com/search/shows?q=';
 let favouriteArray = [];
 
+const remove = () =>{
+  for (const arrayObject of favouriteArray){
+    if(arrayObject.name === event.currentTarget.previousSibling.innerHTML){
+      event.currentTarget.closest('li').classList.add('hidden');
+      favouriteArray.splice(arrayObject, 1);
+      localStorage.setItem('object', JSON.stringify(favouriteArray));
+    }
+  }
+};
 const addNewFavourite = (object) => {
   const favElement = document.createElement('li');
   favElement.classList.add('fav-item');
@@ -18,11 +27,17 @@ const addNewFavourite = (object) => {
   const elementSpanFavContent = document.createTextNode(object.name);
   elementSpanFav.appendChild(elementSpanFavContent);
   const elementSpanRemove = document.createElement('span');
+  elementSpanRemove.classList.add('remove-icon');
   elementSpanRemove.innerHTML = '<i class="fas fa-times-circle"></i>';
   favElement.appendChild(elementImgFav);
   favElement.appendChild(elementSpanFav);
   favElement.appendChild(elementSpanRemove);
   favouriteList.appendChild(favElement);
+
+  const removeIcons = document.querySelectorAll('.remove-icon');
+  for (const icon of removeIcons) {
+    icon.addEventListener('click',remove);
+  }
 };
 const getLocalStorage = () =>{
   if(localStorage.getItem('object')!==null){
