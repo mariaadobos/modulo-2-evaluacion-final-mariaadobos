@@ -11,6 +11,7 @@ let lis;
 
 const addNewFavourite = (object) => {
   const favElement = document.createElement('li');
+  favElement.classList.add('fav-item');
   favElement.innerHTML += `<span>${object.name}</span><img src=${object.image}>`;
   favouriteList.appendChild(favElement);
 };
@@ -48,6 +49,7 @@ const displayResults = (result) => {
     const show = item.show;
     //console.log(show)
     const elementLi = document.createElement('li');
+    elementLi.classList.add('search-result-item');
     const elementImg = document.createElement('img');
     const images = show.image;
     if (images===null){
