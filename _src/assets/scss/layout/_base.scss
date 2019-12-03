@@ -1,3 +1,17 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.favourites-wrapper, .search-results{
+    width: 50%;
+}
+span{
+    display: block;
+}
+.hidden{
+    display: none;
+}
 .selected{
     color: rgb(247, 187, 219);
     background-color: rgb(172, 27, 104);;
