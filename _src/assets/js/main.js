@@ -14,7 +14,17 @@ const addNewFavourite = (object) => {
   favElement.innerHTML += `<span>${object.name}</span><img src=${object.image}>`;
   favouriteList.appendChild(favElement);
 };
-
+const getLocalStorage = () =>{
+  if(localStorage.getItem('object')!==null){
+    favouriteArray = JSON.parse(localStorage.getItem('object'));
+    //console.log(favouriteArray);
+    favouriteSeriesSection.classList.remove('hidden');
+    for (const object of favouriteArray){
+      //console.log(object);
+      addNewFavourite(object);
+    }
+  }
+};
 const selectShow = (event) => {
   event.currentTarget.classList.toggle('selected');
   favouriteSeriesSection.classList.remove('hidden');
@@ -29,7 +39,7 @@ const selectShow = (event) => {
     favouriteArray.push(object);
     addNewFavourite(object);
     localStorage.setItem('object', JSON.stringify(favouriteArray));
-    console.log(object);
+    //console.log(object);
   }
 };
 const displayResults = (result) => {
@@ -65,4 +75,5 @@ const connectToAPI = () => {
     });
 };
 btn.addEventListener('click', connectToAPI);
+window.addEventListener('load', getLocalStorage);
 
