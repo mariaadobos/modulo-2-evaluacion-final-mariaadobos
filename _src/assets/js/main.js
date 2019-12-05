@@ -34,7 +34,9 @@ const getLocalStorage = () =>{
   }
 };
 const selectShow = (event) => {
-  event.currentTarget.classList.toggle('selected');
+  const childNodes = event.currentTarget.childNodes;
+  console.log(event.currentTarget.childNodes[1].innerHTML);
+  //event.currentTarget.classList.toggle('selected');
   favouriteSeriesSection.classList.remove('hidden');
   if (event.currentTarget.classList.contains('selected')===true){
     const favShowImage = event.currentTarget.firstChild.src;
@@ -64,9 +66,13 @@ const displayResults = (result) => {
     const elementSpan = document.createElement('span');
     const showName = document.createTextNode(show.name);
     elementSpan.appendChild(showName);
+    const elementSpanGenre = document.createElement('span');
+    const elementSpanGenreContent = document.createTextNode(show.genres);
+    elementSpanGenre.appendChild(elementSpanGenreContent);
 
     elementLi.appendChild(elementImg);
     elementLi.appendChild(elementSpan);
+    elementLi.appendChild(elementSpanGenre);
     resultsList.appendChild(elementLi);
 
     elementLi.addEventListener('click', selectShow);
@@ -84,4 +90,3 @@ const submitFormHandler = (event) => {
 elementForm.addEventListener('submit', submitFormHandler);
 btn.addEventListener('click', connectToAPI);
 window.addEventListener('load', getLocalStorage);
-
